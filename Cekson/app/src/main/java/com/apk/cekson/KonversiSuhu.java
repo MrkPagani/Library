@@ -11,6 +11,7 @@ public class KonversiSuhu extends AppCompatActivity {
 
     EditText edtCelcius,edtFarenheit,edtReamur,edtKelvin;
     Button buttonKonversi;
+    float farenheit,celcius,kelvin,reamur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,14 @@ public class KonversiSuhu extends AppCompatActivity {
         buttonKonversi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int celcius = Integer.parseInt(edtCelcius.getText().toString().trim());
-                double farenheit = celcius * 273.15;
-                double kelvin = celcius * 1.8 * 32;
-                double reamur = celcius * 6.8;
-                edtKelvin.setText(String.valueOf(kelvin));
-                edtFarenheit.setText(String.valueOf(farenheit));
-                edtReamur.setText(String.valueOf(reamur));
+                celcius = Float.parseFloat(edtCelcius.getText().toString().trim());
+                farenheit = (celcius *9/5)+32;
+                kelvin = celcius+273;
+                reamur =(float) (0.8*celcius);
+
+                edtFarenheit.setText(farenheit+"");
+                edtKelvin.setText(kelvin+"");
+                edtReamur.setText(reamur+"");
             }
         });
     }

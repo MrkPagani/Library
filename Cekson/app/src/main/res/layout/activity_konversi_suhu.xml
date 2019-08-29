@@ -9,7 +9,7 @@
     tools:context=".KonversiSuhu">
 
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/labelCelcius"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,10 +18,10 @@
         />
 
     <EditText
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/editCelcius"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/labelCelcius"
         android:layout_marginLeft="5dp"
         android:ems="12"/>

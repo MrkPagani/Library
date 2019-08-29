@@ -8,11 +8,14 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.sql.ResultSet;
+
 public class KalkulatorButton extends AppCompatActivity implements View.OnClickListener {
 
-    Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button0,btnTambah,btnKurang,buttonKali,buttonBagi,btnHapus,btnKoma;
+    Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button0,btnTambah,btnKurang,buttonKali,buttonBagi,btnHapus,btnKoma,buttonEqual;
     TextView Result;
-    Float var1,var2,var3;
+    float var1,var2;
+    boolean Plus,Minus,Divide,Times;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class KalkulatorButton extends AppCompatActivity implements View.OnClickL
         buttonBagi = findViewById(R.id.btnBagi);
         btnKoma = findViewById(R.id.btnTitik);
         btnHapus = findViewById(R.id.btnClear);
+        buttonEqual = findViewById(R.id.btnEqual);
         Result = findViewById(R.id.angka);
 
         button0.setOnClickListener(this);
@@ -53,16 +57,88 @@ public class KalkulatorButton extends AppCompatActivity implements View.OnClickL
         buttonKali.setOnClickListener(this);
         btnKoma.setOnClickListener(this);
         btnHapus.setOnClickListener(this);
-        Result.setOnClickListener(this);
+        buttonEqual.setOnClickListener(this);
+
     }
     @Override
     public void onClick(View v) {
 
         switch(v.getId()){
             case R.id.btn0:
-
-
+                Result.setText(Result.getText().toString().trim()+"0");
+                break;
+            case R.id.btn1:
+                Result.setText(Result.getText().toString().trim()+"1");
+                break;
+            case R.id.btn2:
+                Result.setText(Result.getText().toString().trim()+"2");
+                break;
+            case R.id.btn3:
+                Result.setText(Result.getText().toString().trim()+"3");
+                break;
+            case R.id.btn4:
+                Result.setText(Result.getText().toString().trim()+"4");
+                break;
+            case R.id.btn5:
+                Result.setText(Result.getText().toString().trim()+"5");
+                break;
+            case R.id.btn6:
+                Result.setText(Result.getText().toString().trim()+"6");
+                break;
+            case R.id.btn7:
+                Result.setText(Result.getText().toString().trim()+"7");
+                break;
+            case R.id.btn8:
+                Result.setText(Result.getText().toString().trim()+"8");
+                break;
+            case R.id.btn9:
+                Result.setText(Result.getText().toString().trim()+"9");
+                break;
+            case R.id.btnTitik:
+                Result.setText(Result.getText().toString().trim()+".");
+                break;
+            case R.id.btnPlus:
+                var1 = Float.parseFloat(Result.getText().toString().trim());
+                Plus = true;
+                Result.setText(null);
+                break;
+            case R.id.btnMinus:
+                var1 = Float.parseFloat(Result.getText().toString().trim());
+                Minus = true;
+                Result.setText(null);
+                break;
+            case R.id.btnKali:
+                var1 = Float.parseFloat(Result.getText().toString().trim());
+                Times = true;
+                Result.setText(null);
+                break;
+            case R.id.btnBagi:
+                var1 = Float.parseFloat(Result.getText().toString().trim());
+                Divide = true;
+                Result.setText(null);
+                break;
+            case R.id.btnClear:
+                Result.setText(null);
+                break;
+            case R.id.btnEqual:
+                var2 = Float.parseFloat(Result.getText().toString().trim());
+                if (Plus == true){
+                    Result.setText(var1 + var2 + "");
+                    Plus = false;
+                }
+                if (Minus == true){
+                    Result.setText(var1 - var2+"");
+                    Minus = false;
+                }
+                if (Times == true){
+                    Result.setText(var1 * var2+"");
+                    Times = false;
+                }
+                if (Divide == true){
+                    Result.setText(var1 / var2+"");
+                    Divide = false;
+                }
+                break;
         }
-
     }
 }
